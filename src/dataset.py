@@ -4,6 +4,7 @@ from torch.utils.data import Dataset
 from PIL import Image
 from .dataset_utils import read_yolo_labels, yolo_to_bbox
 import numpy as np 
+
 class SunspotDataset(Dataset):
 
     def __init__(self, image_dir, label_dir):
@@ -52,7 +53,7 @@ class SunspotDataset(Dataset):
 
         return image, target
 
-    def collate_fn(batch):
+def collate_fn(batch):
         images,targets=zip(*batch)
         return list(images), list(targets)
     
