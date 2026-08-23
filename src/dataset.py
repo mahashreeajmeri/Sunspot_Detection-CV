@@ -51,4 +51,8 @@ class SunspotDataset(Dataset):
         target= {"boxes":boxes,"labels":labels}
 
         return image, target
+
+    def collate_fn(batch):
+        images,targets=zip(*batch)
+        return list(images), list(targets)
     
